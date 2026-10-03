@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#3b3540;--soft:#6a5a4e;--muted:#9a7f73;--line:#e6dcd2;--rose:#f6cfd4;--sky:#d9e4f2;--paper:#faf6ef;--btn:#3b3540}
+:root{--ink:#3b3540;--soft:#6a5a4e;--muted:#7a6358;--line:#e6dcd2;--rose:#f6cfd4;--sky:#d9e4f2;--paper:#faf6ef;--btn:#3b3540}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;overflow-x:hidden;color:var(--ink);background:var(--paper) url(assets/paper.jpg) center top/1080px auto;font:400 17px/1.6 "Nunito Sans",sans-serif;-webkit-font-smoothing:antialiased}
@@ -23,7 +23,11 @@ a{color:inherit}
 .k{letter-spacing:.3em;text-transform:uppercase;font-size:12.5px;color:var(--muted);font-weight:600}
 .wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,5vw,60px)}
 .btn{display:inline-block;padding:13px 26px;border:1px solid var(--soft);border-radius:40px;font:600 15px "Nunito Sans";color:var(--ink);text-decoration:none;transition:background .25s,color .25s}
-.btn:hover,.btn:focus-visible{background:var(--btn);color:#fff;outline:none}
+.btn:hover,.btn:focus-visible{background:var(--btn);color:#fff}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+::selection{background:var(--rose);color:var(--ink)}
+.skip{position:absolute;left:-999px;top:12px;background:var(--btn);color:#fff;padding:10px 16px;border-radius:8px;z-index:9}
+.skip:focus{left:12px}
 .btn.solid{background:var(--btn);color:#fff;border-color:var(--btn)}
 .btn.solid:hover{background:#5a4f60}
 .btn.off{border-style:dashed;color:var(--muted);cursor:default}
@@ -54,12 +58,12 @@ h2{font:500 clamp(40px,5vw,58px)/1.05 "Cormorant Garamond";margin:12px 0 18px}
 .book .cv img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
 .book .cv:hover img{transform:scale(1.03)}
 .book .cv.sq img{object-fit:contain;background:#fff}
-.book .theme{color:#a06a5e}
+.book .theme{color:#8a594d}
 .book h3{font:600 30px/1.1 "Cormorant Garamond";margin:6px 0 4px}
 .book .sub{font:italic 400 19px/1.35 "Cormorant Garamond";color:var(--soft);margin:0 0 12px}
 .book p{font-size:15.5px;color:#5a5258;margin:0 0 18px}
 .book .acts{display:flex;flex-wrap:wrap;gap:10px}
-.book .acts .btn{padding:11px 20px;font-size:14px}
+.book .acts .btn{padding:13px 22px;font-size:14px}
 /* poems */
 .poems{background:rgba(255,255,255,.55);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .prow{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
@@ -67,7 +71,7 @@ h2{font:500 clamp(40px,5vw,58px)/1.05 "Cormorant Garamond";margin:12px 0 18px}
 .poem img{width:170px;height:170px;object-fit:contain;mix-blend-mode:multiply}
 .poem h3{font:600 28px "Cormorant Garamond";margin:8px 0 14px}
 .poem .lines{font:400 20px/1.5 "Cormorant Garamond";color:#4a434c;white-space:pre-line}
-.poem .from{display:block;margin-top:16px;font-size:13px;color:var(--muted);letter-spacing:.06em}
+.poem .from{display:block;margin-top:16px;font:italic 400 17px "Cormorant Garamond";color:var(--muted)}
 /* videos */
 .vids{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;max-width:900px}
 .vids figure{margin:0}
@@ -98,9 +102,10 @@ footer .help b{color:var(--ink)}
 </head>
 <body>
 <div class="wrap">
-<nav><a class="name" href="#">Janice Kingsley</a><a class="l" href="#books">The books</a><a class="l" href="#poems">Read a poem</a><a class="l" href="#watch">Watch</a><a class="l" href="#about">About</a></nav>
+<a class="skip" href="#books">Skip to the books</a>
+<nav aria-label="Main"><a class="name" href="#">Janice Kingsley</a><a class="l" href="#books">The books</a><a class="l" href="#poems">Read a poem</a><a class="l" href="#watch">Watch</a><a class="l" href="#about">About</a></nav>
 
-<header class="hero">
+<header class="hero" id="top">
   <div>
     <div class="k">Poems by</div>
     <h1>Janice Kingsley</h1>
